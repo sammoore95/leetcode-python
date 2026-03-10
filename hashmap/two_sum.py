@@ -12,14 +12,16 @@ Time Complexity: O(n)
 Space Complexity: O(n)
 """
 
-class Solution:
-    def twoSum(self, nums, target):
-        lookup = {}
+def addTwoNumbers(l1, l2 ):
+    reversed_l1 = l1[::-1]
+    reversed_l2 = l2[::-1]
 
-        for i, num in enumerate(nums):
-            diff = target - num
+    number1 = 0
+    number2 = 0
 
-            if diff in lookup:
-                return [lookup[diff], i]
+    for i in reversed_l1:
+        number1 = number1 * 10 + i
 
-            lookup[num] = i
+    return number1
+
+print(addTwoNumbers(l1=[1, 2, 3], l2=[7, 8, 9]))
