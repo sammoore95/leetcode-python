@@ -9,25 +9,30 @@ def romanToInt(s):
         "M": 1000
     }
 
-    numerals = []
-
-    for n in str(s):
-        numerals.append(n)
-
     number = 0
 
-    for i in numerals:
-        for key, value in dict_numerals.items():
-            if i == key:
-                number += value
-            else:
-                number += 0
+    for i in range(len(s)):
+
+        # check if last character and if current value is smaller than the next value
+        if i < len(s) - 1 and dict_numerals[s[i]] < dict_numerals[s[i+1]]:
+            number -= dict_numerals[s[i]]
+        else:
+            number += dict_numerals[s[i]]
 
     return number
 
-tests = ["III", "LVIII", "MCMXCIV"]
 
-for i in tests:
-    result = romanToInt(i)
-    print(result)
+# tests = ["III", "LVIII", "MCMXCIV"]
 
+# for i in tests:
+#     result = romanToInt(i)
+#     print(result)
+
+def test_romanToInt():
+    assert romanToInt(s="III") == 3
+    assert romanToInt(s="LVIII") == 58
+    assert romanToInt(s="MCMXCIV") == 1994
+
+if __name__ == "__main__":
+    test_romanToInt()
+    print("All tests passed")
